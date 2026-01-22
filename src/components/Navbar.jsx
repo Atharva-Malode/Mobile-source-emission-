@@ -9,16 +9,30 @@ export default function Navbar() {
           Home
         </Link>
 
-        <Link href="/about" className="hover:text-blue-200">
+        {/* External redirect */}
+        <a
+          href="https://www.neeri.res.in/divisions/details/sub-verticals-air-resource#googtrans(en|en)"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-blue-200"
+        >
           About Us
-        </Link>
+        </a>
 
-        <Link href="/analysis" className="hover:text-blue-200">
-          Analysis
+        <Link href="/analytics" className="hover:text-blue-200">
+          Analytics
         </Link>
 
         <Link href="/gis" className="hover:text-blue-200">
           GIS
+        </Link>
+
+        <Link href="/award" className="hover:text-blue-200">
+          Award
+        </Link>
+
+        <Link href="/result" className="hover:text-blue-200">
+          Result
         </Link>
 
       </div>
