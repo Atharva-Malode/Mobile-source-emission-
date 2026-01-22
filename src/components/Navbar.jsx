@@ -23,6 +23,10 @@ export default function Navbar() {
           Analytics
         </Link>
 
+        <Link href="/grid" className="hover:text-blue-200">
+          Gridded Emission
+        </Link>
+
         <Link href="/gis" className="hover:text-blue-200">
           GIS
         </Link>
