@@ -13,3 +13,55 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* ===================================================== */
+/* 🔹 UNIVERSAL CHART COLOR SYSTEM                       */
+/* ===================================================== */
+
+:root {
+  /* Vehicle categories */
+  --color-2w: #ffc658;
+  --color-3w: #1ebfd4;
+  --color-4w: #8884d8;
+  --color-ldv: #c26214;
+  --color-hdv: #82ca9d;
+
+  /* Pollutants */
+  --color-pm: #b91c1c;
+  --color-nox: #1d4ed8;
+  --color-hc: #a16207;
+  --color-co: #065f46;
+
+  /* Chart surfaces */
+  --chart-bg: #1b244b;
+  --chart-card-start: rgba(6, 11, 40, 0.74);
+  --chart-card-end: rgba(10, 14, 35, 0.71);
+
+  /* Analytics chart colors */
+  --axis-color: #374151;        /* gray-700 */
+  --grid-color: #e5e7eb;        /* gray-200 */
+  --label-color: #374151;
+  --tooltip-bg: #ffffff;
+  --tooltip-border: #d1d5db;
+
+
+}
+
+/* ===================================================== */
+/* 🔹 SHARED CHART UI HELPERS                            */
+/* ===================================================== */
+
+.chart-card {
+  background: linear-gradient(
+    90deg,
+    var(--chart-card-start),
+    var(--chart-card-end)
+  );
+  backdrop-filter: blur(40px);
+  border-radius: 14px;
+}
+
+.chart-inner {
+  background: var(--chart-bg);
+  border-radius: 10px;
+}
