@@ -20,11 +20,11 @@ a {
 
 :root {
   /* Vehicle categories */
-  --color-2w: #ffc658;
-  --color-3w: #1ebfd4;
-  --color-4w: #8884d8;
-  --color-ldv: #c26214;
-  --color-hdv: #82ca9d;
+  --color-2w:  #b4081f;  /* dark brown (2W) */
+  --color-3w:  #0f766e;  /* dark teal (3W) */
+  --color-4w:  #c008b7;  /* dark indigo (4W) */
+  --color-ldv: #a5a209;  /* dark ochre (LDV) */
+  --color-hdv: #1b09b8;  /* dark forest green (HDV) */
 
   /* Pollutants */
   --color-pm: #b91c1c;
