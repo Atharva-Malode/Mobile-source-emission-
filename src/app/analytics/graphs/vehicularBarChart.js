@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   Tooltip,
@@ -12,7 +12,7 @@ import {
   Label,
 } from "recharts";
 
-/* Analytics-grade vehicle colors (single source of truth) */
+/* Vehicle colors from global.css */
 const VEHICLE_COLORS = {
   "2W": "var(--color-2w)",
   "3W": "var(--color-3w)",
@@ -21,15 +21,15 @@ const VEHICLE_COLORS = {
   HDV: "var(--color-hdv)",
 };
 
-/* Numeric safety helper */
+/* Numeric safety */
 const toNumber = (v) => {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
 };
 
-export default function VehicleCountChart({ selectedDate }) {
+export default function VehicleBarChart({ selectedDate }) {
   const [vehicleData, setVehicleData] = useState([]);
-  const [checkedLines, setCheckedLines] = useState({
+  const [visibleBars, setVisibleBars] = useState({
     "2W": true,
     "3W": true,
     "4W": true,
@@ -63,7 +63,7 @@ export default function VehicleCountChart({ selectedDate }) {
       } catch (error) {
         console.warn("API failed, loading fallback CSV:", error);
 
-        /* CSV fallback (index-based, no headers) */
+        /* CSV fallback (index-based) */
         try {
           const csvResponse = await fetch("/2025-12-18.csv");
           const csvText = await csvResponse.text();
@@ -98,33 +98,33 @@ export default function VehicleCountChart({ selectedDate }) {
     }
   }, [selectedDate]);
 
-  function handleCheckboxChange(e) {
-    setCheckedLines((prev) => ({
+  function handleToggle(e) {
+    setVisibleBars((prev) => ({
       ...prev,
       [e.target.name]: e.target.checked,
     }));
   }
 
   return (
-    <div className="border rounded-lg p-4 space-y-4 bg-white">
-      {/* Header + colored checkboxes (acts as legend) */}
+    <div className="border rounded-lg p-4 bg-white space-y-4 w-full">
+      {/* Header + colored toggles */}
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h2 className="text-lg font-semibold text-gray-800">
-          Vehicle Count (veh/hr)
+        <h2 className="text-xl font-bold text-gray-800">
+          Vehicle Count – Distribution
         </h2>
 
-        <div className="flex flex-wrap gap-4 text-sm">
-          {Object.keys(checkedLines).map((key) => (
+        <div className="flex flex-wrap gap-4 text-m font-bold">
+          {Object.keys(visibleBars).map((key) => (
             <label
               key={key}
-              className="flex items-center gap-2 font-medium"
+              className="flex items-center gap-2 text-l font-bold"
               style={{ color: VEHICLE_COLORS[key] }}
             >
               <input
                 type="checkbox"
                 name={key}
-                checked={checkedLines[key]}
-                onChange={handleCheckboxChange}
+                checked={visibleBars[key]}
+                onChange={handleToggle}
               />
               <span>{key}</span>
             </label>
@@ -135,30 +135,28 @@ export default function VehicleCountChart({ selectedDate }) {
       {/* Chart */}
       <div className="h-72 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={vehicleData}>
+          <BarChart data={vehicleData}>
             <CartesianGrid
               stroke="var(--grid-color)"
               strokeDasharray="3 3"
             />
 
-            {/* X Axis */}
             <XAxis
               dataKey="time"
               stroke="var(--axis-color)"
-              tick={{ fill: "var(--label-color)", fontSize: 12 }}
+              tick={{ fill: "var(--label-color)", fontSize: 14, fontWeight: "bold" }}
             >
               <Label
                 value="Time (hr)"
                 position="insideBottom"
                 offset={-5}
-                style={{ fill: "var(--label-color)", fontSize: 12 }}
+                style={{ fill: "var(--label-color)", fontSize: 16, fontWeight: "bold" }}
               />
             </XAxis>
 
-            {/* Y Axis */}
             <YAxis
               stroke="var(--axis-color)"
-              tick={{ fill: "var(--label-color)", fontSize: 12 }}
+              tick={{ fill: "var(--label-color)", fontSize: 14, fontWeight: "bold" }}
             >
               <Label
                 value="Vehicle Count"
@@ -166,7 +164,8 @@ export default function VehicleCountChart({ selectedDate }) {
                 position="insideLeft"
                 style={{
                   fill: "var(--label-color)",
-                  fontSize: 12,
+                  fontSize: 16,
+                  fontWeight: "bold",
                   textAnchor: "middle",
                 }}
               />
@@ -176,60 +175,28 @@ export default function VehicleCountChart({ selectedDate }) {
               contentStyle={{
                 backgroundColor: "var(--tooltip-bg)",
                 border: "1px solid var(--tooltip-border)",
-                fontSize: "12px",
+                fontSize: "16px",
               }}
             />
 
-            {checkedLines["2W"] && (
-              <Line
-                type="monotone"
-                dataKey="2W"
-                stroke={VEHICLE_COLORS["2W"]}
-                strokeWidth={3}
-                dot={false}
-              />
+            {visibleBars["2W"] && (
+              <Bar dataKey="2W" fill={VEHICLE_COLORS["2W"]} />
             )}
-            {checkedLines["3W"] && (
-              <Line
-                type="monotone"
-                dataKey="3W"
-                stroke={VEHICLE_COLORS["3W"]}
-                strokeWidth={3}
-                dot={false}
-              />
+            {visibleBars["3W"] && (
+              <Bar dataKey="3W" fill={VEHICLE_COLORS["3W"]} />
             )}
-            {checkedLines["4W"] && (
-              <Line
-                type="monotone"
-                dataKey="4W"
-                stroke={VEHICLE_COLORS["4W"]}
-                strokeWidth={3}
-                dot={false}
-              />
+            {visibleBars["4W"] && (
+              <Bar dataKey="4W" fill={VEHICLE_COLORS["4W"]} />
             )}
-            {checkedLines.LDV && (
-              <Line
-                type="monotone"
-                dataKey="LDV"
-                stroke={VEHICLE_COLORS.LDV}
-                strokeWidth={3}
-                dot={false}
-              />
+            {visibleBars.LDV && (
+              <Bar dataKey="LDV" fill={VEHICLE_COLORS.LDV} />
             )}
-            {checkedLines.HDV && (
-              <Line
-                type="monotone"
-                dataKey="HDV"
-                stroke={VEHICLE_COLORS.HDV}
-                strokeWidth={3}
-                dot={false}
-              />
+            {visibleBars.HDV && (
+              <Bar dataKey="HDV" fill={VEHICLE_COLORS.HDV} />
             )}
-          </LineChart>
+          </BarChart>
         </ResponsiveContainer>
       </div>
     </div>
   );
 }
-
-

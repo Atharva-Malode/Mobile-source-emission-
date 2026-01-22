@@ -97,15 +97,15 @@ function EmissionChart({ selectedDate }) {
     <div className="border rounded-lg p-4 space-y-4 bg-white">
       {/* Header + colored checkboxes (acts as legend) */}
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h2 className="text-lg font-semibold text-gray-800">
+        <h2 className="text-xl font-bold text-gray-800">
           Emission Load (Kg/hr)
         </h2>
 
-        <div className="flex flex-wrap gap-4 text-sm">
+        <div className="flex flex-wrap gap-4 text-m font-bold">
           {Object.keys(checkedLines).map((key) => (
             <label
               key={key}
-              className="flex items-center gap-2 font-medium"
+              className="flex items-center gap-2 text-l font-bold"
               style={{ color: POLLUTANT_COLORS[key] }}
             >
               <input
@@ -130,28 +130,29 @@ function EmissionChart({ selectedDate }) {
             <XAxis
               dataKey="time"
               stroke="#374151"
-              tick={{ fill: "#374151", fontSize: 12 }}
+              tick={{ fill: "var(--label-color)", fontSize: 14, fontWeight: "bold" }}
             >
               <Label
                 value="Time (hr)"
                 position="insideBottom"
                 offset={-5}
-                style={{ fill: "#374151", fontSize: 12 }}
+                style={{ fill: "var(--label-color)", fontSize: 16, fontWeight: "bold" }}
               />
             </XAxis>
 
             {/* Y Axis */}
             <YAxis
               stroke="#374151"
-              tick={{ fill: "#374151", fontSize: 12 }}
+              tick={{ fill: "var(--label-color)", fontSize: 14, fontWeight: "bold" }}
             >
               <Label
                 value="Emission Load (kg)"
                 angle={-90}
                 position="insideLeft"
                 style={{
-                  fill: "#374151",
-                  fontSize: 12,
+                  fill: "var(--label-color)",
+                  fontSize: 16,
+                  fontWeight: "bold",
                   textAnchor: "middle",
                 }}
               />
@@ -159,9 +160,10 @@ function EmissionChart({ selectedDate }) {
 
             <Tooltip
               contentStyle={{
-                backgroundColor: "#ffffff",
-                border: "1px solid #d1d5db",
-                fontSize: "12px",
+                backgroundColor: "var(--tooltip-bg)",
+                border: "1px solid var(--tooltip-border)",
+                fontSize: "16px",
+                FontWeight: "bold"
               }}
             />
 
