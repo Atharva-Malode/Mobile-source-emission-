@@ -74,17 +74,17 @@ export default function GridPage() {
           const tooltipHtml = isTarget
             ? `
               <b>NEERI Grid</b><br/>
-              PM: ${NEERI_EMISSIONS.PM} kg/day<br/>
-              NOx: ${NEERI_EMISSIONS.NOx} kg/day<br/>
-              HC: ${NEERI_EMISSIONS.HC} kg/day<br/>
-              CO: ${NEERI_EMISSIONS.CO} kg/day
+              PM: ${NEERI_EMISSIONS.PM} Kg/D<br/>
+              NOx: ${NEERI_EMISSIONS.NOx} Kg/D<br/>
+              HC: ${NEERI_EMISSIONS.HC} Kg/D<br/>
+              CO: ${NEERI_EMISSIONS.CO} Kg/D
             `
             : `
               <b>Grid Cell</b><br/>
-              PM: 0 kg/day<br/>
-              NOx: 0 kg/day<br/>
-              HC: 0 kg/day<br/>
-              CO: 0 kg/day
+              PM: 0 Kg/D<br/>
+              NOx: 0 Kg/D<br/>
+              HC: 0 Kg/D<br/>
+              CO: 0 Kg/D/>
             `;
 
           layer.bindTooltip(tooltipHtml, {
@@ -200,7 +200,7 @@ export default function GridPage() {
       {/* HEADER + DROPDOWN */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-blue-900 text-center flex-1">
-          Emission Load Hotspot Map
+          Mobile Emission Load Nagpur City (Kg/D)
         </h1>
 
         <select
@@ -209,8 +209,9 @@ export default function GridPage() {
           className="border px-3 py-2 text-sm rounded bg-white ml-4"
         >
           <option value="nagpur">Nagpur</option>
-          <option value="mumbai">Mumbai (Demo)</option>
-          <option value="delhi">Delhi (Demo)</option>
+          <option value="mumbai">Mumbai </option>
+          <option value="delhi">Delhi </option>
+          <option value="nashik">Nashik </option>
         </select>
       </div>
 

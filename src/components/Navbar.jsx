@@ -3,13 +3,12 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <nav className="w-full bg-blue-900 text-white">
-      <div className="w-full flex justify-between items-center px-6 py-4 text-sm font-medium">
+      <div className="w-full flex items-center gap-18 px-6 py-4 text-sm font-bold">
 
         <Link href="/" className="hover:text-blue-200">
           Home
         </Link>
 
-        {/* External redirect */}
         <a
           href="https://www.neeri.res.in/divisions/details/sub-verticals-air-resource#googtrans(en|en)"
           target="_blank"
@@ -23,16 +22,16 @@ export default function Navbar() {
           GIS
         </Link>
 
-        <Link href="/result" className="hover:text-blue-200">
-          Result
+        <Link href="/analytics" className="hover:text-blue-200">
+          Analytics
         </Link>
 
         <Link href="/grid" className="hover:text-blue-200">
-          Gridded Emission
+          Gridded Emission Load
         </Link>
 
         <Link href="/award" className="hover:text-blue-200">
-          Award
+          Awards & Recognition
         </Link>
 
       </div>
@@ -41,18 +40,18 @@ export default function Navbar() {
 }
 
 
+
 // import Link from "next/link";
 
 // export default function Navbar() {
 //   return (
 //     <nav className="w-full bg-blue-900 text-white">
-//       <div className="mx-auto max-w-7xl flex gap-8 px-6 py-4 text-sm font-medium">
+//       <div className="w-full flex justify-center items-center gap-10 px-6 py-4 text-sm font-medium">
 
 //         <Link href="/" className="hover:text-blue-200">
 //           Home
 //         </Link>
 
-//         {/* External redirect */}
 //         <a
 //           href="https://www.neeri.res.in/divisions/details/sub-verticals-air-resource#googtrans(en|en)"
 //           target="_blank"
@@ -62,24 +61,20 @@ export default function Navbar() {
 //           About Us
 //         </a>
 
-//         <Link href="/analytics" className="hover:text-blue-200">
-//           Analytics
+//         <Link href="/gis" className="hover:text-blue-200">
+//           GIS
+//         </Link>
+
+//         <Link href="/result" className="hover:text-blue-200">
+//           Result
 //         </Link>
 
 //         <Link href="/grid" className="hover:text-blue-200">
 //           Gridded Emission
 //         </Link>
 
-//         <Link href="/gis" className="hover:text-blue-200">
-//           GIS
-//         </Link>
-
 //         <Link href="/award" className="hover:text-blue-200">
 //           Award
-//         </Link>
-
-//         <Link href="/result" className="hover:text-blue-200">
-//           Result
 //         </Link>
 
 //       </div>

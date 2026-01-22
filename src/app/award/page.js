@@ -3,7 +3,7 @@ export default function Award() {
     <section className="w-full space-y-8">
 
       {/* PAGE TITLE */}
-      <div>
+      <div className="text-center">
         <h1 className="text-2xl font-bold text-blue-900">
           SKOCH Award 2025 – Semi-Finalist
         </h1>
@@ -18,7 +18,8 @@ export default function Award() {
         {/* LEFT: CERTIFICATE */}
         <div className="border rounded-lg bg-white p-5 flex flex-col">
 
-          <h2 className="text-sm font-semibold text-blue-900 uppercase mb-3">
+          <h2 className="text-base font-semibold text-blue-900 uppercase text-center 
+                         border-b border-green-600 pb-2 mb-4">
             Award Certificate
           </h2>
 
@@ -35,7 +36,8 @@ export default function Award() {
         {/* RIGHT: VIDEO + DESCRIPTION */}
         <div className="border rounded-lg bg-white p-5 flex flex-col space-y-4">
 
-          <h2 className="text-sm font-semibold text-blue-900 uppercase">
+          <h2 className="text-base font-semibold text-blue-900 uppercase text-center 
+                         border-b border-green-600 pb-2">
             Project Overview
           </h2>
 
