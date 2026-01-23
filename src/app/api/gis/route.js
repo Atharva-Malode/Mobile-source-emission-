@@ -23,7 +23,7 @@ export async function GET(req) {
     const cityPath = path.join(basePath, city);
 
     const images = fs.readdirSync(cityPath)
-      .filter((f) => /\.(png|jpg|jpeg|svg)$/i.test(f));
+      .filter((f) => /\.(png|jpg|jpeg|svg|tif)$/i.test(f));
 
     result[city] = images;
   });
