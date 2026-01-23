@@ -27,6 +27,11 @@ a {
   --color-4w:  #c008b7;  /* 4-Wheeler bars/lines */
   --color-ldv: #a5a209;  /* Light Duty Vehicle */
   --color-hdv: #1b09b8;  /* Heavy Duty Vehicle */
+  
+  --brand-green-dark: #16a34a;   /* green-600 */  
+  --brand-green: #228b22;
+
+
 }
 
 /* ===================================================== */

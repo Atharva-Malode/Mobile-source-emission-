@@ -4,43 +4,71 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <nav className="w-full bg-blue-900 text-white">
-      <div className="w-full flex items-center gap-18 px-6 py-4 text-sm font-bold">
+      <div className="w-full flex items-center gap-14 px-6 py-4 text-base font-bold">
 
+        {/* HOME */}
         <Link href="/" className="hover:text-blue-200">
           Home
         </Link>
 
-        <a
-          href="https://www.neeri.res.in/divisions/details/sub-verticals-air-resource#googtrans(en|en)"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-blue-200"
-        >
-          About Us
-        </a>
-
-        {/* GIS DROPDOWN */}
+        {/* ================= ABOUT US DROPDOWN ================= */}
         <div className="relative group">
           <span className="cursor-pointer hover:text-blue-200 flex items-center gap-1">
-            GIS
-            {/* Down Arrow */}
+            About Us
             <span className="text-xs">▼</span>
           </span>
 
-          {/* Dropdown Menu */}
-          <div className="absolute left-0 mt-2 w-64 bg-white text-blue-900 border border-blue-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <div
+            className="absolute left-0 mt-2 w-64 bg-white text-blue-900
+                       border border-blue-200 rounded-md shadow-lg
+                       opacity-0 invisible group-hover:opacity-100
+                       group-hover:visible transition-all duration-200 z-50"
+          >
+            <a
+              href="https://www.neeri.res.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between px-4 py-3 hover:bg-blue-100"
+            >
+              <span>CSIR-NEERI</span>
+              <span className="text-sm">›</span>
+            </a>
 
+            <div className="border-t border-blue-200" />
 
+            <a
+              href="https://www.neeri.res.in/divisions/details/sub-verticals-air-resource#googtrans(en|en)"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between px-4 py-3 hover:bg-blue-100"
+            >
+              <span>Air Resource Sub-Vertical</span>
+              <span className="text-sm">›</span>
+            </a>
+          </div>
+        </div>
+
+        {/* ================= GIS DROPDOWN ================= */}
+        <div className="relative group">
+          <span className="cursor-pointer hover:text-blue-200 flex items-center gap-1">
+            GIS
+            <span className="text-xs">▼</span>
+          </span>
+
+          <div
+            className="absolute left-0 mt-2 w-64 bg-white text-blue-900
+                       border border-blue-200 rounded-md shadow-lg
+                       opacity-0 invisible group-hover:opacity-100
+                       group-hover:visible transition-all duration-200 z-50"
+          >
             <Link
               href="/gis/city-road-network"
               className="flex items-center justify-between px-4 py-3 hover:bg-blue-100"
             >
               <span>City Road Network</span>
-              {/* Right Arrow */}
               <span className="text-sm">›</span>
             </Link>
 
-            {/* Divider */}
             <div className="border-t border-blue-200" />
 
             <Link
@@ -48,26 +76,38 @@ export default function Navbar() {
               className="flex items-center justify-between px-4 py-3 hover:bg-blue-100"
             >
               <span>Emission Load</span>
-              {/* Right Arrow */}
               <span className="text-sm">›</span>
             </Link>
-
           </div>
         </div>
 
+        {/* OUR TEAM */}
+        <Link href="/team" className="hover:text-blue-200">
+          Our Team
+        </Link>
+
+        {/* ANALYTICS */}
         <Link href="/analytics" className="hover:text-blue-200">
           Analytics
         </Link>
 
+        {/* GRID */}
         <Link href="/grid" className="hover:text-blue-200">
           Gridded Emission Load
         </Link>
 
+        {/* AWARDS */}
         <Link href="/award" className="hover:text-blue-200">
           Awards & Recognition
+        </Link>
+
+        {/* CONTACT */}
+        <Link href="/contact" className="hover:text-blue-200">
+          Contact Us
         </Link>
 
       </div>
     </nav>
   );
 }
+
