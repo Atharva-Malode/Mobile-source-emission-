@@ -15,36 +15,85 @@ a {
 }
 
 /* ===================================================== */
-/* 🔹 UNIVERSAL CHART COLOR SYSTEM                       */
+/* 🔹 VEHICLE CATEGORY COLORS (USED IN ALL VEHICLE CHARTS) */
 /* ===================================================== */
-
+/* Used in:
+   - Vehicle count charts
+   - Emission breakdowns by vehicle type
+*/
 :root {
-  /* Vehicle categories */
-  --color-2w:  #b4081f;  /* dark brown (2W) */
-  --color-3w:  #0f766e;  /* dark teal (3W) */
-  --color-4w:  #c008b7;  /* dark indigo (4W) */
-  --color-ldv: #a5a209;  /* dark ochre (LDV) */
-  --color-hdv: #1b09b8;  /* dark forest green (HDV) */
+  --color-2w:  #b4081f;  /* 2-Wheeler bars/lines */
+  --color-3w:  #0f766e;  /* 3-Wheeler bars/lines */
+  --color-4w:  #c008b7;  /* 4-Wheeler bars/lines */
+  --color-ldv: #a5a209;  /* Light Duty Vehicle */
+  --color-hdv: #1b09b8;  /* Heavy Duty Vehicle */
+}
 
-  /* Pollutants */
-  --color-pm: #b91c1c;
-  --color-nox: #1d4ed8;
-  --color-hc: #a16207;
-  --color-co: #065f46;
+/* ===================================================== */
+/* 🔹 POLLUTANT COLORS (USED IN EMISSION CHARTS ONLY)    */
+/* ===================================================== */
+/* Used in:
+   - NOx / PM / CO / HC emission graphs
+   - Emission analytics & GIS plots
+*/
+:root {
+  --color-pm:  #b91c1c; /* Particulate Matter (PM) */
+  --color-nox: #1d4ed8; /* Nitrogen Oxides (NOx) */
+  --color-hc:  #a16207; /* Hydrocarbons (HC) */
+  --color-co:  #065f46; /* Carbon Monoxide (CO) */
+}
 
-  /* Chart surfaces */
-  --chart-bg: #1b244b;
+/* ===================================================== */
+/* 🔹 CHART SURFACE & CARD STYLING                       */
+/* ===================================================== */
+/* Used in:
+   - All analytics charts
+   - Emission & vehicle count cards
+*/
+:root {
+  --chart-bg: #1b244b; /* Inner chart background */
+  
+  /* Gradient used for chart cards */
   --chart-card-start: rgba(6, 11, 40, 0.74);
-  --chart-card-end: rgba(10, 14, 35, 0.71);
+  --chart-card-end:   rgba(10, 14, 35, 0.71);
+}
 
-  /* Analytics chart colors */
-  --axis-color: #374151;        /* gray-700 */
-  --grid-color: #e5e7eb;        /* gray-200 */
-  --label-color: #374151;
-  --tooltip-bg: #ffffff;
+/* ===================================================== */
+/* 🔹 CHART AXES, GRID & TOOLTIP COLORS                  */
+/* ===================================================== */
+/* Used in:
+   - Chart.js / Recharts axis labels
+   - Grid lines
+   - Tooltips
+*/
+:root {
+  --axis-color:    #374151; /* Axis lines & ticks */
+  --grid-color:    #e5e7eb; /* Grid lines */
+  --label-color:   #374151; /* Axis text labels */
+
+  --tooltip-bg:     #ffffff;
   --tooltip-border: #d1d5db;
+}
 
+/* ===================================================== */
+/* 🔹 GIS & PAGE LAYOUT COLORS (NON-CHART UI)            */
+/* ===================================================== */
+/* Used in:
+   - GIS Emission Load page
+   - City Road Network page
+   - Panels, cards, sidebars
+*/
+:root {
+  --layout-panel-bg:       #ffffff; /* Main containers */
+  --layout-panel-muted-bg:#f9fafb;  /* Inner cards / graph holders */
 
+  --layout-border:         #d1d5db; /* Borders for panels */
+
+  --layout-heading-color:  #0f2a44; /* Section & city headings */
+  --layout-text-primary:   #1f2937; /* Normal text */
+  --layout-text-muted:     #6b7280; /* Secondary text */
+
+  --layout-hover-bg:       #e6eef6; /* Hover states (lists, dropdowns) */
 }
 
 /* ===================================================== */

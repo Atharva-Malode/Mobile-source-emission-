@@ -114,7 +114,7 @@ export default function VehicularCount({ selectedDate }) {
       {/* Pie Chart */}
       <div className="border rounded-lg p-4 bg-white w-full max-w-[420px] space-y-3">
         <h2 className="text-xl font-bold text-gray-800 text-center">
-          Emission Load Percent
+          Emission Load %
         </h2>
 
         {/* Colored labels (legend replacement) */}

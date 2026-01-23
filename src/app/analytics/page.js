@@ -36,8 +36,7 @@ export default function Analysis() {
           <select
             value={selectedCamera}
             onChange={(e) => setSelectedCamera(e.target.value)}
-            className="border rounded-md px-3 py-2 text-gray-900 bg-white
-                       focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border rounded-md px-3 py-2 text-gray-900 bg-white"
           >
             <option value="" disabled>
               Select Camera
@@ -55,8 +54,7 @@ export default function Analysis() {
             type="date"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
-            className="border rounded-md px-3 py-2 text-gray-900
-                       focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border rounded-md px-3 py-2 text-gray-900"
           />
         </div>
       </div>
