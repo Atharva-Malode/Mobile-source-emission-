@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import VehicleCard from "@/components/VehicleCard";
+import AnimatedSpacer from "@/components/AnimatedSpacer";
 import { WS_ENDPOINTS, REST_ENDPOINTS } from "@/config/backend";
 
 /* ================= VEHICLE META (LABEL + COLOR MAP) ================= */
@@ -126,136 +127,144 @@ export default function HomePage() {
   }, [selectedDate]);
 
   return (
-    <section className="w-full space-y-6">
+    <>
+      <section className="w-full space-y-6">
 
-      {/* DASHBOARD GRID */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* ================= DASHBOARD GRID ================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-        {/* ================= LIVE FEED ================= */}
-        <div className="lg:col-span-6 bg-white rounded-lg overflow-hidden border flex flex-col">
-          <div
-            className="px-4 py-3 text-center font-semibold text-lg text-white"
-            style={{ backgroundColor: "var(--brand-green)" }}
-          >
-            Realtime Vehicle Counting
-          </div>
-
-          <div className="flex-1 bg-black relative overflow-hidden">
-            {frameSrc ? (
-              <img
-                src={frameSrc}
-                alt="Live Feed"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            ) : (
-              <div className="flex items-center justify-center h-full text-gray-300 text-sm">
-                Waiting for live feed…
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* ================= VEHICLE COUNT ================= */}
-        <div className="lg:col-span-3 bg-white rounded-lg overflow-hidden border flex flex-col">
-          <div
-            className="px-4 py-3 text-center font-semibold text-lg text-white"
-            style={{ backgroundColor: "var(--brand-green)" }}
-          >
-            Vehicle Count
-          </div>
-
-          <div className="flex-1 p-4 grid grid-cols-2 grid-rows-3 gap-4">
-            {Object.entries(VEHICLE_META).map(([key, meta]) => (
-              <VehicleCard
-                key={key}
-                label={meta.label}
-                count={vehicleCounts[key]}
-                icon={meta.icon}
-                color={meta.color}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* ================= CSV DOWNLOAD ================= */}
-        <div className="lg:col-span-3 bg-white rounded-lg overflow-hidden border flex flex-col">
-          <div
-            className="px-4 py-3 text-center font-semibold text-lg text-white"
-            style={{ backgroundColor: "var(--brand-green)" }}
-          >
-            Download Data
-          </div>
-
-          <div className="p-4 space-y-4 border-b">
-            <div>
-              <label className="block text-sm text-gray-700 mb-1">
-                Select Date
-              </label>
-              <input
-                type="date"
-                value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
-                className="w-full border rounded px-3 py-2 text-sm"
-              />
-            </div>
-
-            <button
-              onClick={() =>
-                window.open(
-                  `${REST_ENDPOINTS.GET_CSV}?date=${selectedDate}`,
-                  "_blank"
-                )
-              }
-              className="w-full text-white text-sm py-2 rounded"
+          {/* ================= LIVE FEED ================= */}
+          <div className="lg:col-span-6 bg-white rounded-lg overflow-hidden border flex flex-col">
+            <div
+              className="px-4 py-3 text-center font-semibold text-lg text-white"
               style={{ backgroundColor: "var(--brand-green)" }}
             >
-              Download CSV
-            </button>
-          </div>
+              Realtime Vehicle Counting
+            </div>
 
-          <div className="p-4">
-            <div className="max-h-[260px] overflow-y-auto border rounded">
-              <table className="w-full text-xs border-collapse">
-                <thead className="sticky top-0 bg-gray-100">
-                  <tr>
-                    {csvHeaders.map((h) => (
-                      <th key={h} className="border px-2 py-1">
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {csvError ? (
-                    <tr>
-                      <td
-                        colSpan={csvHeaders.length || 1}
-                        className="border px-2 py-4 text-center text-gray-500"
-                      >
-                        {csvError}
-                      </td>
-                    </tr>
-                  ) : (
-                    csvRows.map((row, i) => (
-                      <tr key={i}>
-                        {csvHeaders.map((h) => (
-                          <td key={h} className="border px-2 py-1 text-center">
-                            {row[h]}
-                          </td>
-                        ))}
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
+            <div className="flex-1 bg-black relative overflow-hidden">
+              {frameSrc ? (
+                <img
+                  src={frameSrc}
+                  alt="Live Feed"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <div className="flex items-center justify-center h-full text-gray-300 text-sm">
+                  Waiting for live feed…
+                </div>
+              )}
             </div>
           </div>
 
-        </div>
+          {/* ================= VEHICLE COUNT ================= */}
+          <div className="lg:col-span-3 bg-white rounded-lg overflow-hidden border flex flex-col">
+            <div
+              className="px-4 py-3 text-center font-semibold text-lg text-white"
+              style={{ backgroundColor: "var(--brand-green)" }}
+            >
+              Vehicle Count
+            </div>
 
-      </div>
-    </section>
+            <div className="flex-1 p-4 grid grid-cols-2 grid-rows-3 gap-4">
+              {Object.entries(VEHICLE_META).map(([key, meta]) => (
+                <VehicleCard
+                  key={key}
+                  label={meta.label}
+                  count={vehicleCounts[key]}
+                  icon={meta.icon}
+                  color={meta.color}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* ================= CSV DOWNLOAD ================= */}
+          <div className="lg:col-span-3 bg-white rounded-lg overflow-hidden border flex flex-col">
+            <div
+              className="px-4 py-3 text-center font-semibold text-lg text-white"
+              style={{ backgroundColor: "var(--brand-green)" }}
+            >
+              Download Data
+            </div>
+
+            <div className="p-4 space-y-4 border-b">
+              <div>
+                <label className="block text-sm text-gray-700 mb-1">
+                  Select Date
+                </label>
+                <input
+                  type="date"
+                  value={selectedDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  className="w-full border rounded px-3 py-2 text-sm"
+                />
+              </div>
+
+              <button
+                onClick={() =>
+                  window.open(
+                    `${REST_ENDPOINTS.GET_CSV}?date=${selectedDate}`,
+                    "_blank"
+                  )
+                }
+                className="w-full text-white text-sm py-2 rounded"
+                style={{ backgroundColor: "var(--brand-green)" }}
+              >
+                Download CSV
+              </button>
+            </div>
+
+            <div className="p-4">
+              <div className="max-h-[260px] overflow-y-auto border rounded">
+                <table className="w-full text-xs border-collapse">
+                  <thead className="sticky top-0 bg-gray-100">
+                    <tr>
+                      {csvHeaders.map((h) => (
+                        <th key={h} className="border px-2 py-1">
+                          {h}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {csvError ? (
+                      <tr>
+                        <td
+                          colSpan={csvHeaders.length || 1}
+                          className="border px-2 py-4 text-center text-gray-500"
+                        >
+                          {csvError}
+                        </td>
+                      </tr>
+                    ) : (
+                      csvRows.map((row, i) => (
+                        <tr key={i}>
+                          {csvHeaders.map((h) => (
+                            <td
+                              key={h}
+                              className="border px-2 py-1 text-center"
+                            >
+                              {row[h]}
+                            </td>
+                          ))}
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* ================= ANIMATED SPACER ================= */}
+      <AnimatedSpacer height={180} />
+    </>
   );
 }
 
@@ -265,6 +274,40 @@ export default function HomePage() {
 // import { useEffect, useRef, useState } from "react";
 // import VehicleCard from "@/components/VehicleCard";
 // import { WS_ENDPOINTS, REST_ENDPOINTS } from "@/config/backend";
+
+// /* ================= VEHICLE META (LABEL + COLOR MAP) ================= */
+// const VEHICLE_META = {
+//   "2w": {
+//     label: "Two Wheeler",
+//     color: "#b4081f",
+//     icon: "/icons/2w.png",
+//   },
+//   "3w": {
+//     label: "Three Wheeler",
+//     color: "#0f766e",
+//     icon: "/icons/3w.png",
+//   },
+//   "4w": {
+//     label: "Four Wheeler",
+//     color: "#c008b7",
+//     icon: "/icons/4w.png",
+//   },
+//   "ldv": {
+//     label: "Light Duty Vehicle",
+//     color: "#a5a209",
+//     icon: "/icons/ldv.png",
+//   },
+//   "hdv": {
+//     label: "Heavy Duty Vehicle",
+//     color: "#1b09b8",
+//     icon: "/icons/hdv.png",
+//   },
+//   "bus": {
+//     label: "Buses",
+//     color: "#065f46",
+//     icon: "/icons/bus.png",
+//   },
+// };
 
 // /* ---------------- CSV PARSER ---------------- */
 // function parseCSV(csvText) {
@@ -282,7 +325,7 @@ export default function HomePage() {
 //   return { headers, rows };
 // }
 
-// export default function Home() {
+// export default function HomePage() {
 //   const wsRef = useRef(null);
 
 //   /* ---------------- LIVE FEED ---------------- */
@@ -323,7 +366,6 @@ export default function HomePage() {
 //     };
 
 //     ws.onerror = () => ws.close();
-
 //     return () => ws.close();
 //   }, []);
 
@@ -357,68 +399,64 @@ export default function HomePage() {
 //   return (
 //     <section className="w-full space-y-6">
 
-//       {/* PAGE TITLE */}
-//       <div className="text-center">
-//         <h1 className="text-2xl font-bold text-green-700">
-//           Realtime Mobile Emission Inventory Dashboard
-//         </h1>
-//       </div>
-
 //       {/* DASHBOARD GRID */}
 //       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-//         {/* 1️⃣ LIVE FEED */}
-//         <div className="lg:col-span-6 border rounded-lg bg-white flex flex-col">
-//           <div className="border-b px-4 py-3 text-center">
-//             <h2 className="text-sm font-semibold text-blue-900 uppercase">
-//               Realtime Vehicle Counting
-//             </h2>
+//         {/* ================= LIVE FEED ================= */}
+//         <div className="lg:col-span-6 bg-white rounded-lg overflow-hidden border flex flex-col">
+//           <div
+//             className="px-4 py-3 text-center font-semibold text-lg text-white"
+//             style={{ backgroundColor: "var(--brand-green)" }}
+//           >
+//             Realtime Vehicle Counting
 //           </div>
 
-//           <div className="flex-1 bg-gray-50 flex items-center justify-center p-4">
-//             <div className="bg-black w-[640px] h-[480px] flex items-center justify-center">
-//               {frameSrc ? (
-//                 <img
-//                   src={frameSrc}
-//                   alt="Live Feed"
-//                   className="w-full h-full object-contain"
-//                 />
-//               ) : (
-//                 <span className="text-gray-300 text-sm">
-//                   Waiting for live feed…
-//                 </span>
-//               )}
-//             </div>
+//           <div className="flex-1 bg-black relative overflow-hidden">
+//             {frameSrc ? (
+//               <img
+//                 src={frameSrc}
+//                 alt="Live Feed"
+//                 className="absolute inset-0 w-full h-full object-cover"
+//               />
+//             ) : (
+//               <div className="flex items-center justify-center h-full text-gray-300 text-sm">
+//                 Waiting for live feed…
+//               </div>
+//             )}
 //           </div>
 //         </div>
 
-//         {/* 2️⃣ VEHICLE COUNT */}
-//         <div className="lg:col-span-3 border rounded-lg bg-white flex flex-col">
-//           <div className="border-b px-4 py-3 text-center">
-//             <h2 className="text-sm font-semibold text-blue-900 uppercase">
-//               Vehicle Count
-//             </h2>
+//         {/* ================= VEHICLE COUNT ================= */}
+//         <div className="lg:col-span-3 bg-white rounded-lg overflow-hidden border flex flex-col">
+//           <div
+//             className="px-4 py-3 text-center font-semibold text-lg text-white"
+//             style={{ backgroundColor: "var(--brand-green)" }}
+//           >
+//             Vehicle Count
 //           </div>
 
 //           <div className="flex-1 p-4 grid grid-cols-2 grid-rows-3 gap-4">
-//             <VehicleCard label="2W" count={vehicleCounts["2w"]} icon="/icons/2w.png" />
-//             <VehicleCard label="3W" count={vehicleCounts["3w"]} icon="/icons/3w.png" />
-//             <VehicleCard label="4W" count={vehicleCounts["4w"]} icon="/icons/4w.png" />
-//             <VehicleCard label="LDV" count={vehicleCounts["ldv"]} icon="/icons/ldv.png" />
-//             <VehicleCard label="HDV" count={vehicleCounts["hdv"]} icon="/icons/hdv.png" />
-//             <VehicleCard label="BUS" count={vehicleCounts["bus"]} icon="/icons/bus.png" />
+//             {Object.entries(VEHICLE_META).map(([key, meta]) => (
+//               <VehicleCard
+//                 key={key}
+//                 label={meta.label}
+//                 count={vehicleCounts[key]}
+//                 icon={meta.icon}
+//                 color={meta.color}
+//               />
+//             ))}
 //           </div>
 //         </div>
 
-//         {/* 3️⃣ CSV DOWNLOAD + PREVIEW */}
-//         <div className="lg:col-span-3 border rounded-lg bg-white flex flex-col">
-//           <div className="border-b px-4 py-3 text-center">
-//             <h2 className="text-sm font-semibold text-blue-900 uppercase">
-//               Download Data
-//             </h2>
+//         {/* ================= CSV DOWNLOAD ================= */}
+//         <div className="lg:col-span-3 bg-white rounded-lg overflow-hidden border flex flex-col">
+//           <div
+//             className="px-4 py-3 text-center font-semibold text-lg text-white"
+//             style={{ backgroundColor: "var(--brand-green)" }}
+//           >
+//             Download Data
 //           </div>
 
-//           {/* Controls */}
 //           <div className="p-4 space-y-4 border-b">
 //             <div>
 //               <label className="block text-sm text-gray-700 mb-1">
@@ -439,13 +477,13 @@ export default function HomePage() {
 //                   "_blank"
 //                 )
 //               }
-//               className="w-full bg-blue-900 text-white text-sm py-2 rounded hover:bg-blue-800"
+//               className="w-full text-white text-sm py-2 rounded"
+//               style={{ backgroundColor: "var(--brand-green)" }}
 //             >
 //               Download CSV
 //             </button>
 //           </div>
 
-//           {/* CSV PREVIEW */}
 //           <div className="p-4">
 //             <div className="max-h-[260px] overflow-y-auto border rounded">
 //               <table className="w-full text-xs border-collapse">
@@ -484,6 +522,7 @@ export default function HomePage() {
 //               </table>
 //             </div>
 //           </div>
+
 //         </div>
 
 //       </div>
