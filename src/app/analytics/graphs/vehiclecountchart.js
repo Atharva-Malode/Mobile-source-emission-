@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import {JSON_ENDPOINTS} from "@/config/backend";
 import {
   LineChart,
   Line,
@@ -41,7 +42,7 @@ export default function VehicleCountChart({ selectedDate }) {
     async function fetchVehicleData() {
       try {
         const response = await fetch(
-          `http://${process.env.NEXT_PUBLIC_APP_IP}:8000/get_json?current_date=${selectedDate}`
+          `${JSON_ENDPOINTS.GET_JSON}?current_date=${selectedDate}`
         );
 
         if (!response.ok) {

@@ -7,3 +7,11 @@ export const WS_ENDPOINTS = {
 export const REST_ENDPOINTS = {
   GET_CSV: `http://${HOST}/get_csv`,
 };
+
+export const JSON_ENDPOINTS = {
+  GET_JSON: `http://${HOST}/get_json`
+};
+
+export const EMISSION_CALCULATION_ENDPOINT = {
+  CALCULATE: `http://${HOST}/calculate-emissions`
+};

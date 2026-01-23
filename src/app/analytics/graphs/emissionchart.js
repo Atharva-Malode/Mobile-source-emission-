@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import {EMISSION_CALCULATION_ENDPOINT} from "@/config/backend";
 import {
   LineChart,
   Line,
@@ -33,7 +34,7 @@ function EmissionChart({ selectedDate }) {
     async function fetchEmissions() {
       try {
         const response = await fetch(
-          `http://${process.env.NEXT_PUBLIC_APP_IP}:8000/calculate-emissions?RdLength=1&current_date=${selectedDate}`
+          `${EMISSION_CALCULATION_ENDPOINT.CALCULATE}?RdLength=1&current_date=${selectedDate}`
         );
 
         if (!response.ok) {

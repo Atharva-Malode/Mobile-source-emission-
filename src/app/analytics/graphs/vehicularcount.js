@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import {EMISSION_CALCULATION_ENDPOINT} from "@/config/backend";
 import {
   PieChart,
   Pie,
@@ -33,7 +34,7 @@ export default function VehicularCount({ selectedDate }) {
         const RdLength = 1;
 
         const response = await fetch(
-          `http://${process.env.NEXT_PUBLIC_APP_IP}:8000/calculate-emissions?RdLength=${RdLength}&current_date=${selectedDate}`
+          `${EMISSION_CALCULATION_ENDPOINT.CALCULATE}?RdLength=${RdLength}&current_date=${selectedDate}`
         );
 
         if (!response.ok) {
