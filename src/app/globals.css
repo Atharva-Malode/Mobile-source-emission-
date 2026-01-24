@@ -14,13 +14,13 @@ a {
   color: inherit;
 }
 
-/* ===================================================== */
-/* 🔹 VEHICLE CATEGORY COLORS (USED IN ALL VEHICLE CHARTS) */
-/* ===================================================== */
-/* Used in:
-   - Vehicle count charts
-   - Emission breakdowns by vehicle type
-*/
+  /* ===================================================== */
+  /* 🔹 VEHICLE CATEGORY COLORS (USED IN ALL VEHICLE CHARTS) */
+  /* ===================================================== */
+  /* Used in:
+    - Vehicle count charts
+    - Emission breakdowns by vehicle type
+  */
 :root {
   --color-2w:  #b4081f;  /* 2-Wheeler bars/lines */
   --color-3w:  #0f766e;  /* 3-Wheeler bars/lines */
@@ -32,63 +32,63 @@ a {
   --brand-green: #228b22;
 
 
-}
 
-/* ===================================================== */
-/* 🔹 POLLUTANT COLORS (USED IN EMISSION CHARTS ONLY)    */
-/* ===================================================== */
-/* Used in:
-   - NOx / PM / CO / HC emission graphs
-   - Emission analytics & GIS plots
-*/
-:root {
+
+  /* ===================================================== */
+  /* 🔹 POLLUTANT COLORS (USED IN EMISSION CHARTS ONLY)    */
+  /* ===================================================== */
+  /* Used in:
+    - NOx / PM / CO / HC emission graphs
+    - Emission analytics & GIS plots
+  */
+
   --color-pm:  #b91c1c; /* Particulate Matter (PM) */
   --color-nox: #1d4ed8; /* Nitrogen Oxides (NOx) */
   --color-hc:  #a16207; /* Hydrocarbons (HC) */
   --color-co:  #065f46; /* Carbon Monoxide (CO) */
-}
 
-/* ===================================================== */
-/* 🔹 CHART SURFACE & CARD STYLING                       */
-/* ===================================================== */
-/* Used in:
-   - All analytics charts
-   - Emission & vehicle count cards
-*/
-:root {
+
+  /* ===================================================== */
+  /* 🔹 CHART SURFACE & CARD STYLING                       */
+  /* ===================================================== */
+  /* Used in:
+    - All analytics charts
+    - Emission & vehicle count cards
+  */
+
   --chart-bg: #1b244b; /* Inner chart background */
   
   /* Gradient used for chart cards */
   --chart-card-start: rgba(6, 11, 40, 0.74);
   --chart-card-end:   rgba(10, 14, 35, 0.71);
-}
 
-/* ===================================================== */
-/* 🔹 CHART AXES, GRID & TOOLTIP COLORS                  */
-/* ===================================================== */
-/* Used in:
-   - Chart.js / Recharts axis labels
-   - Grid lines
-   - Tooltips
-*/
-:root {
+
+  /* ===================================================== */
+  /* 🔹 CHART AXES, GRID & TOOLTIP COLORS                  */
+  /* ===================================================== */
+  /* Used in:
+    - Chart.js / Recharts axis labels
+    - Grid lines
+    - Tooltips
+  */
+
   --axis-color:    #374151; /* Axis lines & ticks */
   --grid-color:    #e5e7eb; /* Grid lines */
   --label-color:   #374151; /* Axis text labels */
 
   --tooltip-bg:     #ffffff;
   --tooltip-border: #d1d5db;
-}
 
-/* ===================================================== */
-/* 🔹 GIS & PAGE LAYOUT COLORS (NON-CHART UI)            */
-/* ===================================================== */
-/* Used in:
-   - GIS Emission Load page
-   - City Road Network page
-   - Panels, cards, sidebars
-*/
-:root {
+
+  /* ===================================================== */
+  /* 🔹 GIS & PAGE LAYOUT COLORS (NON-CHART UI)            */
+  /* ===================================================== */
+  /* Used in:
+    - GIS Emission Load page
+    - City Road Network page
+    - Panels, cards, sidebars
+  */
+
   --layout-panel-bg:       #ffffff; /* Main containers */
   --layout-panel-muted-bg:#f9fafb;  /* Inner cards / graph holders */
 
@@ -99,6 +99,13 @@ a {
   --layout-text-muted:     #6b7280; /* Secondary text */
 
   --layout-hover-bg:       #e6eef6; /* Hover states (lists, dropdowns) */
+
+  /* ===================================================== */
+  /* 🔹 ABOUT PAGE COLORS                                  *
+  /* ===================================================== */
+  --about-heading-color: var(--layout-heading-color);
+  --about-text-color: var(--layout-text-primary);
+
 }
 
 /* ===================================================== */

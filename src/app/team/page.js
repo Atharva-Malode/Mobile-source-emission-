@@ -32,7 +32,7 @@ const TEAM_MEMBERS = [
   {
     name: "Raj S. Sonarghare",
     designation: "Project Associate I",
-    image: "/team/raj.png",
+    image: "/team/raj1.png",
     linkedin: "https://www.linkedin.com/in/rajsonarghare/",
   },
 ];

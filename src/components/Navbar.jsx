@@ -19,7 +19,7 @@ export default function Navbar() {
               <span>CSIR-NEERI</span><span>›</span>
             </a>
             <div className="border-t border-blue-200" />
-            <a href="https://www.neeri.res.in/divisions/details/sub-verticals-air-resource#googtrans(en|en)" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between px-4 py-3 hover:bg-blue-100">
+            <a href="/about" className="flex items-center justify-between px-4 py-3 hover:bg-blue-100">
               <span>Air Quality Management</span><span>›</span>
             </a>
           </div>
