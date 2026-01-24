@@ -1,10 +1,108 @@
 "use client";
 
+const contacts = [
+  {
+    id: "mohan",
+    name: "Dr. S. Venkata Mohan",
+    designation: "Director, CSIR-NEERI, Nagpur",
+    division: [],
+    emails: ["s.mohan@csir.res.in", "director@csir.res.in"],
+    mobiles: ["+919849306934"],
+  },
+  {
+    id: "george",
+    name: "Dr. K V George",
+    designation: "Chief Scientist & Chair",
+    division: [
+      "Air Quality Management Division",
+      "CSIR-NEERI, Nagpur",
+    ],
+    emails: ["kv.george@csir.res.in"],
+    mobiles: ["+919422305272"],
+    
+  },
+  {
+    id: "rahul",
+    name: "Er. Rahul V. Vyawahare",
+    designation: "Senior Scientist",
+    division: [
+      "Air Quality Management Division",
+      "CSIR-NEERI, Nagpur",
+    ],
+    emails: ["rahul.vyawahare@csir.res.in"],
+    mobiles: ["+919403253467", "+918830686334"],
+    
+  },
+];
+
+
+function ContactCard({ contact }) {
+  return (
+    <article className="rounded-xl border border-black p-6 bg-white transition hover:shadow-md">
+      
+      <div className="space-y-4">
+        
+        {/* Name */}
+        <h2 className="text-lg font-bold text-black">
+          {contact.name}
+        </h2>
+
+        {/* Designation */}
+        <p className="text-sm font-bold text-black">
+          {contact.designation}
+        </p>
+
+        {/* Division */}
+        {contact.division.length > 0 && (
+          <div className="text-sm font-bold text-black space-y-0.5">
+            {contact.division.map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
+          </div>
+        )}
+
+        {/* Divider */}
+        <div className="border-t border-black" />
+
+        {/* Email Section */}
+        <div className="space-y-1">
+          <p className="text-sm font-bold text-black">Email</p>
+          {contact.emails.map((email, i) => (
+            <a
+              key={i}
+              href={`mailto:${email}`}
+              className="block text-sm font-bold text-black hover:underline"
+            >
+              {email}
+            </a>
+          ))}
+        </div>
+
+        {/* Mobile Section */}
+        <div className="space-y-1">
+          <p className="text-sm font-bold text-black">Mobile</p>
+          {contact.mobiles.map((mobile, i) => (
+            <a
+              key={i}
+              href={`tel:${mobile}`}
+              className="block text-sm font-bold text-black hover:underline"
+            >
+              {mobile}
+            </a>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+
+
+
 export default function ContactPage() {
   return (
-    <section className="w-full px-6 lg:px-12 py-12 space-y-14">
-      {/* ================= HEADING ================= */}
-      <div className="text-center max-w-3xl mx-auto">
+    <section className="w-full px-6 lg:px-12 py-12 space-y-12">
+      <div className="text-center max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-gray-900">
           Contact Information
         </h1>
@@ -13,129 +111,10 @@ export default function ContactPage() {
         </p>
       </div>
 
-      {/* ================= CONTACT LIST ================= */}
-      <div className="max-w-4xl mx-auto space-y-10">
-        {/* ================= CONTACT 1 ================= */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <h2 className="text-xl font-bold text-gray-900">
-            Dr. S. Venkata Mohan
-          </h2>
-          <p className="text-gray-700 font-medium mt-1">
-            Director, CSIR-NEERI, Nagpur
-          </p>
-
-          <div className="mt-4 space-y-2 text-gray-700">
-            <p>
-              <span className="font-semibold">Email:</span>{" "}
-              <a
-                href="mailto:s.mohan@csir.res.in"
-                className="text-blue-700 hover:underline"
-              >
-                s.mohan@csir.res.in
-              </a>{" "}
-              /{" "}
-              <a
-                href="mailto:director@csir.res.in"
-                className="text-blue-700 hover:underline"
-              >
-                director@csir.res.in
-              </a>
-            </p>
-
-            <p>
-              <span className="font-semibold">Mobile:</span>{" "}
-              <a
-                href="tel:+919849306934"
-                className="text-blue-700 hover:underline"
-              >
-                +91 98493 06934
-              </a>
-            </p>
-          </div>
-        </div>
-
-        {/* ================= CONTACT 2 ================= */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <h2 className="text-xl font-bold text-gray-900">
-            Dr. K V George
-          </h2>
-          <p className="text-gray-700 font-medium mt-1">
-            Chief Scientist & Chair
-          </p>
-          <p className="text-gray-700 font-medium">
-            Air Quality Management Division
-          </p>
-          <p className="text-gray-700 font-medium">
-            CSIR-NEERI, Nagpur
-          </p>
-
-          <div className="mt-4 space-y-2 text-gray-700">
-            <p>
-              <span className="font-semibold">Email:</span>{" "}
-              <a
-                href="mailto:kv.george@csir.res.in"
-                className="text-blue-700 hover:underline"
-              >
-                kv.george@csir.res.in
-              </a>
-            </p>
-
-            <p>
-              <span className="font-semibold">Mobile:</span>{" "}
-              <a
-                href="tel:+919422305272"
-                className="text-blue-700 hover:underline"
-              >
-                +91 94223 05272
-              </a>
-            </p>
-          </div>
-        </div>
-
-        {/* ================= CONTACT 3 ================= */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <h2 className="text-xl font-bold text-gray-900">
-            Er. Rahul V. Vyawahare
-          </h2>
-          <p className="text-gray-700 font-medium mt-1">
-            Senior Scientist
-          </p>
-          <p className="text-gray-700 font-medium">
-            Air Quality Management Division
-          </p>
-          <p className="text-gray-700 font-medium">
-            CSIR-NEERI, Nagpur
-          </p>
-
-          <div className="mt-4 space-y-2 text-gray-700">
-            <p>
-              <span className="font-semibold">Email:</span>{" "}
-              <a
-                href="mailto:rahul.vyawahare@csir.res.in"
-                className="text-blue-700 hover:underline"
-              >
-                rahul.vyawahare@csir.res.in
-              </a>
-            </p>
-
-            <p>
-              <span className="font-semibold">Mobile:</span>{" "}
-              <a
-                href="tel:+919403253467"
-                className="text-blue-700 hover:underline"
-              >
-                +91 94032 53467
-              </a>{" "}
-              /{" "}
-              <a
-                href="tel:+918830686334"
-                className="text-blue-700 hover:underline"
-              >
-                +91 88306 86334
-              </a>
-            </p>
-          </div>
-        </div>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {contacts.map((contact) => (
+          <ContactCard key={contact.id} contact={contact} />
+        ))}
       </div>
     </section>
   );
