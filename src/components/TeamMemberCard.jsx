@@ -3,11 +3,9 @@ export default function TeamMemberCard({
   designation,
   role,
   image,
-  linkedin,
 }) {
   return (
     <div className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col items-center text-center gap-3">
-
       {/* Image OR Initial fallback */}
       {image ? (
         <img
@@ -35,18 +33,6 @@ export default function TeamMemberCard({
           </span>
         )}
       </div>
-
-      {/* Profile link (LinkedIn / NEERI) */}
-      {linkedin && (
-        <a
-          href={linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-1 text-blue-700 text-sm font-semibold hover:underline"
-        >
-          View Profile
-        </a>
-      )}
     </div>
   );
 }
