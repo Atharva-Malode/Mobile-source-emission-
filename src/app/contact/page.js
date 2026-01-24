@@ -4,7 +4,8 @@ const contacts = [
   {
     id: "mohan",
     name: "Dr. S. Venkata Mohan",
-    designation: "Director, CSIR-NEERI, Nagpur",
+    designation: "Director",
+    institute: "CSIR-NEERI, Nagpur",
     division: [],
     emails: ["s.mohan@csir.res.in", "director@csir.res.in"],
     mobiles: ["+919849306934"],
@@ -19,7 +20,6 @@ const contacts = [
     ],
     emails: ["kv.george@csir.res.in"],
     mobiles: ["+919422305272"],
-    
   },
   {
     id: "rahul",
@@ -31,91 +31,100 @@ const contacts = [
     ],
     emails: ["rahul.vyawahare@csir.res.in"],
     mobiles: ["+919403253467", "+918830686334"],
-    
   },
 ];
 
-
-function ContactCard({ contact }) {
+function ContactCard({ contact, isDirector }) {
   return (
-    <article className="rounded-xl border border-black p-6 bg-white transition hover:shadow-md">
-      
-      <div className="space-y-4">
-        
-        {/* Name */}
-        <h2 className="text-lg font-bold text-black">
+    <article className="rounded-xl border border-black p-4 bg-white">
+      <div className="space-y-1 text-sm text-black">
+
+        <h2 className="text-base font-bold">
           {contact.name}
         </h2>
 
-        {/* Designation */}
-        <p className="text-sm font-bold text-black">
+        <p className="font-bold">
           {contact.designation}
         </p>
 
-        {/* Division */}
-        {contact.division.length > 0 && (
-          <div className="text-sm font-bold text-black space-y-0.5">
+        {isDirector && (
+          <p className="font-bold">
+            {contact.institute}
+          </p>
+        )}
+
+        {contact.division?.length > 0 && (
+          <div className="font-bold">
             {contact.division.map((line, i) => (
               <p key={i}>{line}</p>
             ))}
           </div>
         )}
 
-        {/* Divider */}
-        <div className="border-t border-black" />
-
-        {/* Email Section */}
-        <div className="space-y-1">
-          <p className="text-sm font-bold text-black">Email</p>
+        {/* Email */}
+        <div className="flex gap-1 flex-wrap">
+          <span className="font-bold">Email:</span>
           {contact.emails.map((email, i) => (
             <a
               key={i}
               href={`mailto:${email}`}
-              className="block text-sm font-bold text-black hover:underline"
+              className="hover:underline"
             >
-              {email}
+              {email}{i < contact.emails.length - 1 && ","}
             </a>
           ))}
         </div>
 
-        {/* Mobile Section */}
-        <div className="space-y-1">
-          <p className="text-sm font-bold text-black">Mobile</p>
+        {/* Mobile */}
+        <div className="flex gap-1 flex-wrap">
+          <span className="font-bold">Mobile:</span>
           {contact.mobiles.map((mobile, i) => (
             <a
               key={i}
               href={`tel:${mobile}`}
-              className="block text-sm font-bold text-black hover:underline"
+              className="hover:underline"
             >
-              {mobile}
+              {mobile}{i < contact.mobiles.length - 1 && ","}
             </a>
           ))}
         </div>
+
       </div>
     </article>
   );
 }
 
-
-
-
 export default function ContactPage() {
+  const director = contacts[0];
+  const others = contacts.slice(1);
+
   return (
-    <section className="w-full px-6 lg:px-12 py-12 space-y-12">
-      <div className="text-center max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900">
+    <section className="w-full px-6 lg:px-12 py-10 space-y-10">
+
+      {/* Header */}
+      <div className="text-center">
+        <h1 className="text-3xl font-bold text-gray-900">
           Contact Information
         </h1>
-        <p className="text-gray-600 mt-3 text-lg">
+        <p className="text-gray-600 mt-1">
           CSIR – National Environmental Engineering Research Institute (NEERI)
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {contacts.map((contact) => (
+      {/* Director – Centered */}
+      <div className="flex justify-center">
+        <div className="max-w-sm w-full">
+          <ContactCard contact={director} isDirector />
+        </div>
+      </div>
+
+      {/* Other Contacts */}
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+        {others.map((contact) => (
           <ContactCard key={contact.id} contact={contact} />
         ))}
       </div>
+
     </section>
   );
 }

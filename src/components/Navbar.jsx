@@ -20,7 +20,7 @@ export default function Navbar() {
             </a>
             <div className="border-t border-blue-200" />
             <a href="/about" className="flex items-center justify-between px-4 py-3 hover:bg-blue-100">
-              <span>Air Quality Management</span><span>›</span>
+              <span>AI Dashboard</span><span>›</span>
             </a>
           </div>
         </div>

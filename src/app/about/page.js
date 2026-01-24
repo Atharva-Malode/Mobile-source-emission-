@@ -8,7 +8,7 @@ export default function About() {
           className="text-2xl font-bold text-center"
           style={{ color: "var(--about-heading-color)" }}
         >
-          About Us
+          AI Dashboard
         </h1>
       </div>
 
