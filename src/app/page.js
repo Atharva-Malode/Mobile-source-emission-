@@ -230,9 +230,9 @@ export default function HomePage() {
     </section>
 
     {/* ================= SPACER ================= */}
-    <div className="mt-6 flex-1 flex">
+    {/* <div className="mt-6 flex-1 flex">
   <AnimatedSpacer />
-</div>
+</div> */}
 
   </div>
 );

@@ -203,10 +203,10 @@ export default function GridPage() {
 
       const tooltipHtml = `
         <b>NEERI Grid</b><br/>
-        PM: ${gridEmissions.PM.toFixed(3)} Kg/D<br/>
-        NOx: ${gridEmissions.NOx.toFixed(3)} Kg/D<br/>
-        HC: ${gridEmissions.HC.toFixed(3)} Kg/D<br/>
-        CO: ${gridEmissions.CO.toFixed(3)} Kg/D
+        PM: ${gridEmissions.PM.toFixed(3)} Kg/d<br/>
+        NOx: ${gridEmissions.NOx.toFixed(3)} Kg/d<br/>
+        HC: ${gridEmissions.HC.toFixed(3)} Kg/d<br/>
+        CO: ${gridEmissions.CO.toFixed(3)} Kg/d
       `;
 
       if (layer.getTooltip()) {
@@ -227,7 +227,7 @@ export default function GridPage() {
       {/* HEADER + CONTROLS */}
       <div className="flex items-center justify-between gap-4">
         <h1 className="text-2xl font-bold text-blue-900 flex-1 text-center">
-          Mobile Emission Load Nagpur City (Kg/D)
+          Mobile Emission Load Nagpur City (Kg/d)
         </h1>
 
         <div className="flex items-center gap-3">
